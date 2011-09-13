@@ -18,15 +18,7 @@ namespace Cradiator.Model
 			Url = url;
 		}
 
-	    public ViewUrl(string url, string username, string password) : this (url)
-	    {
-	        Username = username;
-	        Password = password;
-	    }
-
-	    public string Url { get; set; }
-		public string Username { get; set; }
-		public string Password { get; set; }
+		public string Url { get; set; }
 
 		public IEnumerable<string> UriList
 		{
@@ -38,15 +30,5 @@ namespace Cradiator.Model
 					   select u.Url;
 			}
 		}
-
-	    public IEnumerable<string> PasswordList
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public IEnumerable<string> UsernameList
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
 	}
 }

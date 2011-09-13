@@ -8,16 +8,6 @@ namespace Cradiator.Tests.Model
 	[TestFixture]
 	public class ViewUrl_Tests
 	{
-        [Test]
-        public void should_add_credentials_if_present()
-        {
-            var url = new ViewUrl("http://test/go/cctray.xml", "user", "pwd");
-
-            url.Url.ShouldBe("http://test/go/cctray.xml");
-            url.Username.ShouldBe("user");
-            url.Password.ShouldBe("pwd");
-        }
-
 		[Test]
 		public void doesnot_append_filename_if_already_exists()
 		{
