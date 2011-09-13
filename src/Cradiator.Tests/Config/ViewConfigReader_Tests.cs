@@ -22,6 +22,7 @@ namespace Cradiator.Tests.Config
                                         showOnlyBroken=""false""
                                         showServerName=""false""
                                         showOutOfDate=""false""
+                                        showBuildAge=""false""
                                         outOfDateDifferenceInMinutes=""0""/> " +
                                 "</views>" +
                             "</configuration>";
@@ -44,6 +45,18 @@ namespace Cradiator.Tests.Config
             view1.SkinName.ShouldBe("Grid");
             view1.ProjectNameRegEx.ShouldBe("v5.*");
             view1.CategoryRegEx.ShouldBe(".*");
+            view1.ShowServerName.ShouldBe(false);
+        }
+
+        [Test]
+        public void can_read_show_build_age_from_xml()
+        {
+            var views = _parser.ParseXml();
+            views.Count().ShouldBe(1);
+
+            var view1 = views.First();
+
+            view1.ShowBuildAge.ShouldBe(false);
         }
 
         [Test]
@@ -79,6 +92,33 @@ namespace Cradiator.Tests.Config
             view1.ShowServerName.ShouldBe(true);
             view1.ShowOutOfDate.ShouldBe(true);
             view1.OutOfDateDifferenceInMinutes.ShouldBe(45);
+        }
+        
+        [Test]
+        public void can_read_then_write_modified_show_build_age_value_to_xml()
+        {
+            var views = _parser.ParseXml();
+            var xmlModified = _parser.CreateUpdatedXml(new ViewSettings
+                              {
+                                URL = "http://new",
+                                ProjectNameRegEx = "[a-z]",  
+                                CategoryRegEx = "[1-9]",  
+                                ServerNameRegEx = "^(http://).*",
+                                SkinName = "StackPhoto",  
+                                ViewName = "NewView",
+                                ShowOnlyBroken = true,
+                                ShowServerName = true,
+                                ShowOutOfDate = true,
+                                ShowBuildAge = true,
+                                OutOfDateDifferenceInMinutes = 45,
+                              });
+
+            _parser = new ViewSettingsParser(new StringReader(xmlModified));
+
+            views = _parser.ParseXml();
+            var view1 = views.First();
+
+            view1.ShowBuildAge.ShouldBe(true);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Cradiator.Config
         const string ShowOnlyBroken = "showOnlyBroken";
         const string ShowServerName = "showServerName";
         const string ShowOutOfDate = "showOutOfDate";
+        const string ShowBuildAge = "showBuildAge";
         const string OutOfDateDifferenceInMinutes = "outOfDateDifferenceInMinutes";
 
         readonly XDocument _xdoc;
@@ -54,6 +55,7 @@ namespace Cradiator.Config
                                 ShowOnlyBroken = bool.Parse(view.Attribute(ShowOnlyBroken).Value),
                                 ShowServerName = bool.Parse(view.Attribute(ShowServerName).Value),
                                 ShowOutOfDate = bool.Parse(view.Attribute(ShowOutOfDate).Value),
+                                ShowBuildAge = bool.Parse(view.Attribute(ShowBuildAge).Value),
                                 OutOfDateDifferenceInMinutes = int.Parse(view.Attribute(OutOfDateDifferenceInMinutes).Value),
                             }).ToList());
         }
@@ -91,6 +93,7 @@ namespace Cradiator.Config
             view1.Attribute(ShowOnlyBroken).Value = settings.ShowOnlyBroken.ToString();
             view1.Attribute(ShowServerName).Value = settings.ShowServerName.ToString();
             view1.Attribute(ShowOutOfDate).Value = settings.ShowOutOfDate.ToString();
+            view1.Attribute(ShowBuildAge).Value = settings.ShowBuildAge.ToString();
             view1.Attribute(OutOfDateDifferenceInMinutes).Value = settings.OutOfDateDifferenceInMinutes.ToString();
 
             var xml = new StringBuilder();

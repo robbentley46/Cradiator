@@ -119,6 +119,7 @@ namespace Cradiator.Config
         }
 
         private int _outOfDateDifferenceInMinutes;
+
         public int OutOfDateDifferenceInMinutes
         {
             get { return _outOfDateDifferenceInMinutes; }
@@ -127,6 +128,19 @@ namespace Cradiator.Config
                 if (_outOfDateDifferenceInMinutes == value) return;
                 _outOfDateDifferenceInMinutes = value;
                 Notify("OutOfDateDifferenceInMinutes");
+            }
+        }
+
+        private bool _showBuildAge;
+        public bool ShowBuildAge
+        {
+            get {
+                return _showBuildAge;
+            }
+            set {
+                if (_showBuildAge == value) return;
+                _showBuildAge = value;
+                Notify("ShowBuildAge");
             }
         }
 

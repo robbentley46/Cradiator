@@ -18,6 +18,7 @@ namespace Cradiator.Config
 
         //extended settings
         bool ShowOutOfDate { get; set; }
+        bool ShowBuildAge { get; set; }
         int OutOfDateDifferenceInMinutes { get; set; }
     }
     // ReSharper restore UnusedMemberInSuper.Global
