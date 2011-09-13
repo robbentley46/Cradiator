@@ -19,9 +19,6 @@ namespace Cradiator.Config
         //extended settings
         bool ShowOutOfDate { get; set; }
         int OutOfDateDifferenceInMinutes { get; set; }
-        string Username { get; set; }
-        string Password { get; set; }
-
     }
     // ReSharper restore UnusedMemberInSuper.Global
 }

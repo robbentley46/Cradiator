@@ -20,9 +20,6 @@ namespace Cradiator.Config
         const string ShowServerName = "showServerName";
         const string ShowOutOfDate = "showOutOfDate";
         const string OutOfDateDifferenceInMinutes = "outOfDateDifferenceInMinutes";
-        const string Username = "username";
-        const string Password = "password";
-
 
         readonly XDocument _xdoc;
 
@@ -58,8 +55,6 @@ namespace Cradiator.Config
                                 ShowServerName = bool.Parse(view.Attribute(ShowServerName).Value),
                                 ShowOutOfDate = bool.Parse(view.Attribute(ShowOutOfDate).Value),
                                 OutOfDateDifferenceInMinutes = int.Parse(view.Attribute(OutOfDateDifferenceInMinutes).Value),
-                                Username = view.Attribute(Username).Value,
-                                Password = view.Attribute(Password).Value
                             }).ToList());
         }
 
@@ -97,8 +92,6 @@ namespace Cradiator.Config
             view1.Attribute(ShowServerName).Value = settings.ShowServerName.ToString();
             view1.Attribute(ShowOutOfDate).Value = settings.ShowOutOfDate.ToString();
             view1.Attribute(OutOfDateDifferenceInMinutes).Value = settings.OutOfDateDifferenceInMinutes.ToString();
-            view1.Attribute(Username).Value = settings.Username;
-            view1.Attribute(Password).Value = settings.Password;
 
             var xml = new StringBuilder();
             using (var xmlWriter = XmlWriter.Create(xml, new XmlWriterSettings
