@@ -25,8 +25,8 @@ namespace Cradiator.Tests.Model
 		public void status_is_building_if_building_and_last_status_was_failure()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='FooProject' activity='Building' lastBuildStatus='Failure' />
+                @"<Projects>
+					<Project name='FooProject' activity='Building' lastBuildStatus='Failure' lastBuildTime='2011-08-18T14:18:06' />
 				</Projects>";
 
 			var projectStatuses = _transformer.Transform(xml);
@@ -37,8 +37,8 @@ namespace Cradiator.Tests.Model
 		public void status_is_building_if_building_and_last_status_was_success()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='FooProject' activity='Building' lastBuildStatus='Success' />
+                @"<Projects>
+					<Project name='FooProject' activity='Building' lastBuildStatus='Success' lastBuildTime='2011-08-18T14:18:06' />
 				</Projects>";
 
 			var projectStatuses = _transformer.Transform(xml);
@@ -49,8 +49,8 @@ namespace Cradiator.Tests.Model
 		public void status_is_failure_if_sleeping_and_last_status_was_failure()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='FooProject' activity='Sleeping' lastBuildStatus='Failure' />
+                @"<Projects>
+					<Project name='FooProject' activity='Sleeping' lastBuildStatus='Failure' lastBuildTime='2011-08-18T14:18:06' />
 				</Projects>";
 
 			var projectStatuses = _transformer.Transform(xml);
@@ -62,8 +62,8 @@ namespace Cradiator.Tests.Model
 		public void status_is_success_if_sleeping_and_last_status_was_success()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='FooProject' activity='Sleeping' lastBuildStatus='Success' />
+                @"<Projects>
+					<Project name='FooProject' activity='Sleeping' lastBuildStatus='Success' lastBuildTime='2011-08-18T14:18:06' />
 				  </Projects>";
 
 			var projectStatuses = _transformer.Transform(xml);
@@ -72,10 +72,10 @@ namespace Cradiator.Tests.Model
 		}
 
 		const string SimilarProjectXml =
-			@"<Projects>
-					<Project name='FooProject' activity='Sleeping' lastBuildStatus='Success' webUrl='http://foo/ccnet'/>
-					<Project name='BarProject' activity='Sleeping' lastBuildStatus='Failure' webUrl='http://foo/ccnet'/>
-					<Project name='FunProject' activity='Sleeping' lastBuildStatus='Failure' webUrl='http://foo/ccnet'/>
+            @"<Projects>
+					<Project name='FooProject' activity='Sleeping' lastBuildStatus='Success' webUrl='http://foo/ccnet' lastBuildTime='2011-08-18T14:18:06' />
+					<Project name='BarProject' activity='Sleeping' lastBuildStatus='Failure' webUrl='http://foo/ccnet' lastBuildTime='2011-08-18T14:18:06' />
+					<Project name='FunProject' activity='Sleeping' lastBuildStatus='Failure' webUrl='http://foo/ccnet' lastBuildTime='2011-08-18T14:18:06' />
 				</Projects>";
 
 		[Test]
@@ -152,8 +152,8 @@ namespace Cradiator.Tests.Model
 		public void CurrentMessage_IsSet_IfPresent_InXml()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='FooProject' CurrentMessage='A message' category='' />
+                @"<Projects>
+					<Project name='FooProject' CurrentMessage='A message' category='' lastBuildTime='2011-08-18T14:18:06' />
 				</Projects>";
 
 			var projectStatuses = _transformer.Transform(xml);
@@ -173,9 +173,9 @@ namespace Cradiator.Tests.Model
 		public void CanFilter_Category()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='ImportantProject' category='Important' />
-					<Project name='LowPriorityProject' category='LowPriority'/>
+                @"<Projects>
+					<Project name='ImportantProject' category='Important' lastBuildTime='2011-08-18T14:18:06' />
+					<Project name='LowPriorityProject' category='LowPriority' lastBuildTime='2011-08-18T14:18:06' />
 				</Projects>";
 
 			_configSettings.CategoryRegEx = "Important";
@@ -192,8 +192,8 @@ namespace Cradiator.Tests.Model
 		public void CanRead_CurrentMessage_FromNewStructure_In_CCnet15_With_1_FailingProject()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='ccnet1.5_project' activity='Sleeping' lastBuildStatus='Failure'>
+                @"<Projects>
+					<Project name='ccnet1.5_project' activity='Sleeping' lastBuildStatus='Failure' lastBuildTime='2011-08-18T14:18:06' >
 						<messages>
 							<message text='Breakers : a, b' kind='Breakers'/>
 							<message text='FailingTasks : Step1, Step2' kind='FailingTasks'/>
@@ -212,14 +212,14 @@ namespace Cradiator.Tests.Model
 		public void CanRead_CurrentMessage_FromNewStructure_In_CCnet15_With_2_FailingProjects()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='project1' activity='Sleeping' lastBuildStatus='Failure'>
+                @"<Projects>
+					<Project name='project1' activity='Sleeping' lastBuildStatus='Failure' lastBuildTime='2011-08-18T14:18:06' >
 						<messages>
 							<message text='Breakers : a, b' kind='Breakers'/>
 							<message text='FailingTasks : Step1, Step2' kind='FailingTasks'/>
 						</messages>
 					</Project>
-					<Project name='project2' activity='Sleeping' lastBuildStatus='Failure'>	
+					<Project name='project2' activity='Sleeping' lastBuildStatus='Failure' lastBuildTime='2011-08-18T14:18:06' >	
 						<messages>
 							<message text='Breakers : c, d' kind='Breakers'/>
 							<message text='FailingTasks : Step1, Step2' kind='FailingTasks'/>
@@ -239,11 +239,11 @@ namespace Cradiator.Tests.Model
 		public void CanRead_CurrentMessage_FromNewStructure_In_CCnet15_With_NoFailing_Projects()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='project1' CurrentMessage='' activity='Sleeping' lastBuildStatus='Success'>
+                @"<Projects>
+					<Project name='project1' CurrentMessage='' activity='Sleeping' lastBuildStatus='Success' lastBuildTime='2011-08-18T14:18:06' >
 						<messages/>
 					</Project>
-					<Project name='project2' CurrentMessage='' activity='Sleeping' lastBuildStatus='Success'>	
+					<Project name='project2' CurrentMessage='' activity='Sleeping' lastBuildStatus='Success' lastBuildTime='2011-08-18T14:18:06' >	
 						<messages/>							
 					</Project>
 				</Projects>";
@@ -260,11 +260,11 @@ namespace Cradiator.Tests.Model
 		public void CanRead_CurrentMessage_FromNewStructure_In_CCnet15_With_1_Failing_1_Success()
 		{
 			const string xml =
-				@"<Projects>
-					<Project name='project1' CurrentMessage='' activity='Sleeping' lastBuildStatus='Success'>
+                @"<Projects>
+					<Project name='project1' CurrentMessage='' activity='Sleeping' lastBuildStatus='Success' lastBuildTime='2011-08-18T14:18:06' >
 						<messages/>
 					</Project>
-					<Project name='project2' activity='Sleeping' CurrentMessage='' lastBuildStatus='Failure'>	
+					<Project name='project2' activity='Sleeping' CurrentMessage='' lastBuildStatus='Failure' lastBuildTime='2011-08-18T14:18:06' >	
 						<messages>
 							<message text='Breakers : a, b' kind='Breakers'/>
 							<message text='FailingTasks : Step1, Step2' kind='FailingTasks'/>

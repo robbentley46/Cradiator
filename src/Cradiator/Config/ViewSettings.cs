@@ -84,7 +84,7 @@ namespace Cradiator.Config
         protected string _serverNameRegEx;
         public string ServerNameRegEx
         {
-            get { return _serverNameRegEx;}
+            get { return _serverNameRegEx.GetRegEx();}
             set
             {
                 if (_serverNameRegEx == value) return;
