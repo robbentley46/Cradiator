@@ -107,6 +107,7 @@
     <Compile Include="Config\ViewSettingsParser.cs" />
     <Compile Include="Config\UsernameMappingReader.cs" />
     <Compile Include="Converters\InstalledVoiceConverter.cs" />
+    <Compile Include="Converters\LastBuildTimeToBuildAgeConverter.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Model\BuildBuster.cs" />

@@ -13,6 +13,9 @@
                        Height="{Binding Path=CurrentMessage, Converter={Converters:ImageSizeConverter}}"  />
                
                 <TextBlock Text="{Binding Path=Name}" />               
+                <TextBlock HorizontalAlignment="Right" Visibility="{Binding BuildAgeVisible}" 
+                    Text="{Binding LastBuildTime, Converter={Converters:LastBuildTimeToBuildAgeConverter}}" 
+                    TextAlignment="Right" FontSize="9" Foreground="DarkRed" />
                 <TextBlock FontSize="9" Foreground="DarkRed" 
                            Text="{Binding Path=CurrentMessage, Converter={Converters:OneBreakerConverter}}" />
                 
@@ -24,7 +27,6 @@
                                       Color="{Binding Path=CurrentState, Converter={Converters:StateToColorConverter}}"/>
                     </LinearGradientBrush>
                 </TextBlock.Background>                
-                
                 </TextBlock>
                 <TextBlock Visibility="{Binding ServerNameVisible}" Text="{Binding ServerName}" TextAlignment="Center" Foreground="WhiteSmoke">
                     <TextBlock.Background>
@@ -34,6 +36,7 @@
                         </LinearGradientBrush >
                     </TextBlock.Background>
                 </TextBlock>
+                
             </StackPanel>
         </Border>
     </DataTemplate>

@@ -13,8 +13,6 @@
                         <Binding Path="CurrentMessage" />
                     </MultiBinding>
                 </TextBlock.Text>
-                <TextBlock Visibility="{Binding BuildAgeVisible}" Text="{Binding LastBuildTime}"
-                    FontSize="9" Foreground="DarkRed" />
                     
                 <TextBlock.Background>
                     <LinearGradientBrush EndPoint="0,1">
@@ -22,7 +20,12 @@
                         <GradientStop Offset="0.5" Color="{Binding Path=CurrentState, Converter={Converters:StateToColorConverter}}"/>
                     </LinearGradientBrush>
                 </TextBlock.Background>
-
+                <TextBlock 
+                    HorizontalAlignment="Right" 
+                    Visibility="{Binding BuildAgeVisible}" 
+                    Text="{Binding LastBuildTime, Converter={Converters:LastBuildTimeToBuildAgeConverter}}" 
+                    TextAlignment="Right"
+                    FontSize="9" Foreground="DarkRed" />
                 </TextBlock>
                 <TextBlock Visibility="{Binding ServerNameVisible}" Text="{Binding ServerName}" TextAlignment="Center" Foreground="WhiteSmoke">
                     <TextBlock.Background>

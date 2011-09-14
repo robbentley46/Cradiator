@@ -104,6 +104,7 @@
     <Compile Include="Converters\ImagePathConverter_Tests.cs" />
     <Compile Include="Converters\ImageSizeConverter_Tests.cs" />
     <Compile Include="Converters\InstalledVoiceConverter_Tests.cs" />
+    <Compile Include="Converters\LastBuildTimeToBuildAgeConverter_Tests.cs" />
     <Compile Include="Converters\OneBreakerConverter_Tests.cs" />
     <Compile Include="Converters\StateToColorConverter_Test.cs" />
     <Compile Include="Converters\SecondsToTimeConverter_Test.cs" />

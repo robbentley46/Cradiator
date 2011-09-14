@@ -51,7 +51,9 @@ namespace Cradiator.Services
 
 			Bind<CradiatorPresenter>().ToSelf().InSingletonScope();
 
-			BindConfigChangeHandlers();
+            Bind<IDateTimeNow>().ToConstant(new DateTimeNow());
+
+            BindConfigChangeHandlers();
 		}
 
 	    private void BindConfigChangeHandlers()

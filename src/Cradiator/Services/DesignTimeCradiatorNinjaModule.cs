@@ -35,13 +35,11 @@ namespace Cradiator.Services
             var vs = new VoiceSelector(css);
 
             Bind<InstalledVoiceConverter>().ToConstant(new InstalledVoiceConverter( vs ));
-
-
+            
             //for the build breakers
             var fs = new FixerStrategy();
             var bs = new BuildBuster( new Config.ConfigSettings(), fs, new GuiltFactory());
             Bind<IBuildBuster>().ToConstant(bs);
-
         }
 
     }

@@ -14,7 +14,10 @@ namespace Cradiator.Services
 
 		public string DownloadString(string url)
 		{
-			return _webClient.DownloadString(new Uri(url));
+		    var uri = new Uri(url);
+		    var userInfo = uri.UserInfo.Split(':');
+            _webClient.Credentials = new NetworkCredential(userInfo[0],userInfo[1]);
+            return _webClient.DownloadString(uri);
 		}
 	}
 }
