@@ -16,6 +16,7 @@ namespace Cradiator.ViewModels
         private bool _isBroken;
         private bool _isSuccessful;
         private Visibility _serverNameVisible;
+        private Visibility _buildAgeVisible;
         private DateTime _lastBuildTime;
 
         [Obsolete("only used by xaml")]
@@ -43,8 +44,18 @@ namespace Cradiator.ViewModels
             {
                 this.ServerNameVisible = Visibility.Collapsed;
             }
+
+            if (vs.ShowBuildAge)
+            {
+                this.BuildAgeVisible = Visibility.Visible;
+            }
+            else
+            {
+                this.BuildAgeVisible = Visibility.Hidden;
+            }
         }
 
+        
         #region ProjectStatusProps
 
         public string Name
@@ -152,6 +163,21 @@ namespace Cradiator.ViewModels
                 if (_serverNameVisible == value) return;
                 _serverNameVisible = value;
                 Notify("ServerNameVisible");
+            }
+        }
+
+        protected Visibility BuildAgeVisible
+        {
+            get
+            {
+                return _buildAgeVisible;
+            }
+            set
+            {
+                if (_buildAgeVisible == value) return;
+                _buildAgeVisible = value;
+                Notify("BuildAgeVisible");
+                _buildAgeVisible = value;
             }
         }
 

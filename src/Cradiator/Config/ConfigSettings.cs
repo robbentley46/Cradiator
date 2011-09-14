@@ -60,6 +60,7 @@ namespace Cradiator.Config
                         ShowOnlyBroken = ShowOnlyBroken,
                         ShowServerName = ShowServerName,
                         ShowOutOfDate = ShowOutOfDate,
+                        ShowBuildAge = ShowBuildAge,
                         OutOfDateDifferenceInMinutes = OutOfDateDifferenceInMinutes
 					});
 				}
@@ -114,6 +115,7 @@ namespace Cradiator.Config
             ShowOnlyBroken = q.ShowOnlyBroken;
             ShowServerName = q.ShowServerName;
             ShowOutOfDate = q.ShowOutOfDate;
+		    ShowBuildAge = q.ShowBuildAge; // no unit test for this
             OutOfDateDifferenceInMinutes = q.OutOfDateDifferenceInMinutes;
 
 		}
@@ -150,8 +152,8 @@ namespace Cradiator.Config
 		public override string ToString()
 		{
 			if (IsOneView)
-				return string.Format("Url={0}, SkinName={1}, PollFrequency={2}, ProjectNameRegEx={3}, ShowCountdown={4}, ShowCountdown={5}, PlaySounds={6}, PlaySpeech={7}, BrokenBuildSound={8}, BrokenBuildText={9}, FixedBuildSound={10}, FixedBuildText={11}, SpeechVoiceName={12}, CategoryRegEx={13}, BreakerGuiltStrategy={14}",
-					_url, _skinName, _pollFrequency, _projectNameRegEx, _showCountdown, _showProgress, _playSounds, _playSpeech, _brokenBuildSound, _brokenBuildText, _fixedBuildSound, _fixedBuildText, _speechVoiceName, _categoryRegEx, _breakerGuiltStrategy);
+				return string.Format("Url={0}, SkinName={1}, PollFrequency={2}, ProjectNameRegEx={3}, ShowCountdown={4}, ShowCountdown={5}, PlaySounds={6}, PlaySpeech={7}, BrokenBuildSound={8}, BrokenBuildText={9}, FixedBuildSound={10}, FixedBuildText={11}, SpeechVoiceName={12}, CategoryRegEx={13}, BreakerGuiltStrategy={14}, ShowBuildAge={15}",
+					_url, _skinName, _pollFrequency, _projectNameRegEx, _showCountdown, _showProgress, _playSounds, _playSpeech, _brokenBuildSound, _brokenBuildText, _fixedBuildSound, _fixedBuildText, _speechVoiceName, _categoryRegEx, _breakerGuiltStrategy, ShowBuildAge);
 
 			return string.Format("PollFrequency={0}, ShowCountdown={1}, ShowProgress={2}, BrokenBuildSound={3}, FixedBuildSound={4}, BrokenBuildText={5}, FixedBuildText={6}, PlaySounds={7}, PlaySpeech={8}, SpeechVoiceName={9}, BreakerGuiltStrategy={10}",
 					_pollFrequency, _showCountdown, _showProgress, _brokenBuildSound, _fixedBuildSound, _brokenBuildText, _fixedBuildText, _playSounds, _playSpeech, _speechVoiceName, _breakerGuiltStrategy);
