@@ -15,9 +15,12 @@ namespace Cradiator.Services
 		public string DownloadString(string url)
 		{
 		    var uri = new Uri(url);
-		    var userInfo = uri.UserInfo.Split(':');
-            _webClient.Credentials = new NetworkCredential(userInfo[0],userInfo[1]);
-            return _webClient.DownloadString(uri);
+            if (!string.IsNullOrEmpty(uri.UserInfo)) // pass through credentials if present. WebClient doesn't seem to support credentials present in the Uri
+            {
+                var userInfo = uri.UserInfo.Split(':');
+                _webClient.Credentials = new NetworkCredential(userInfo[0], userInfo[1]);
+            }
+		    return _webClient.DownloadString(uri);
 		}
 	}
 }
