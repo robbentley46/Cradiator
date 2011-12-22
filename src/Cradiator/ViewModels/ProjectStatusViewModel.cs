@@ -51,7 +51,7 @@ namespace Cradiator.ViewModels
             }
             else
             {
-                this.BuildAgeVisible = Visibility.Hidden;
+                this.BuildAgeVisible = Visibility.Collapsed;
             }
         }
 
@@ -166,7 +166,7 @@ namespace Cradiator.ViewModels
             }
         }
 
-        protected Visibility BuildAgeVisible
+        public Visibility BuildAgeVisible
         {
             get
             {
